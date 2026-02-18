@@ -75,6 +75,9 @@ X_train_tensor = torch.tensor(X_train, dtype=torch.float32)
 y_train_tensor = torch.tensor(y_train, dtype=torch.float32).view(-1, 1)
 X_test_tensor = torch.tensor(X_test, dtype=torch.float32)
 y_test_tensor = torch.tensor(y_test, dtype=torch.float32).view(-1, 1)
+
+# Name: Lathika Sree R
+# Register Number: 212224040169
 class NeuralNet(nn.Module):
   def __init__(self):
         super().__init__()
@@ -89,30 +92,40 @@ class NeuralNet(nn.Module):
         x = self.relu(self.fc2(x))
         x = self.fc3(x)
         return x
-ai_brain = NeuralNet()
+
+# Initialize the Model, Loss Function, and Optimizer
+Lathika = NeuralNet()
 criterion = nn.MSELoss()
-optimizer = optim.RMSprop(ai_brain.parameters(), lr=0.001)
-def train_model(ai_brain, X_train, y_train, criterion, optimizer, epochs=2000):
+optimizer = optim.RMSprop(Lathika.parameters(), lr=0.001)
+
+# Name: LATHIKA SREE R
+# Register Number: 212224040169
+def train_model(Lathika, X_train, y_train, criterion, optimizer, epochs=2000):
     for epoch in range(epochs):
         optimizer.zero_grad()
-        loss = criterion(ai_brain(X_train), y_train)
+        loss = criterion(Lathika(X_train), y_train)
         loss.backward()
         optimizer.step()
-        ai_brain.history['loss'].append(loss.item())
+
+
+        # Append loss inside the loop
+        Lathika.history['loss'].append(loss.item())
 
         if epoch % 200 == 0:
             print(f'Epoch [{epoch}/{epochs}], Loss: {loss.item():.6f}')
 
 
-train_model(ai_brain, X_train_tensor, y_train_tensor, criterion, optimizer)
+train_model(Lathika, X_train_tensor, y_train_tensor, criterion, optimizer)
 
 with torch.no_grad():
-    test_loss = criterion(ai_brain(X_test_tensor), y_test_tensor)
+    test_loss = criterion(Lathika(X_test_tensor), y_test_tensor)
     print(f'Test Loss: {test_loss.item():.6f}')
 
-loss_df = pd.DataFrame(ai_brain.history)
+loss_df = pd.DataFrame(Lathika.history)
 
 import matplotlib.pyplot as plt
+print("\nName: Lathika sree R")
+print("Register Number: 212224040169")
 loss_df.plot()
 plt.xlabel("Epochs")
 plt.ylabel("Loss")
@@ -120,7 +133,9 @@ plt.title("Loss during Training")
 plt.show()
 
 X_n1_1 = torch.tensor([[9]], dtype=torch.float32)
-prediction = ai_brain(torch.tensor(scaler.transform(X_n1_1), dtype=torch.float32)).item()
+prediction = Lathika(torch.tensor(scaler.transform(X_n1_1), dtype=torch.float32)).item()
+print("Name: Lathika Sree R")
+print("Register Number:212224040169")
 print(f'Prediction: {prediction}')
 ```
 ## Dataset Information
@@ -130,17 +145,17 @@ print(f'Prediction: {prediction}')
 
 ## OUTPUT
 
-<img width="399" height="240" alt="image" src="https://github.com/user-attachments/assets/9252c54a-9539-44c1-951b-78d14ee2c30e" />
+<img width="459" height="309" alt="image" src="https://github.com/user-attachments/assets/90ce9af8-02be-4aaf-90b0-b46fb0795e16" />
 
 
 ### Training Loss Vs Iteration Plot
 
-<img width="716" height="569" alt="image" src="https://github.com/user-attachments/assets/f1855e8e-9c6c-4d9f-b026-6f77f691363a" />
+<img width="721" height="575" alt="image" src="https://github.com/user-attachments/assets/1241c228-e95e-4a4b-a310-7f4bddaad769" />
 
 
 ### New Sample Data Prediction
 
-<img width="323" height="32" alt="image" src="https://github.com/user-attachments/assets/f5f38b0d-d676-405a-9e7f-acdd674f2a17" />
+<img width="304" height="71" alt="image" src="https://github.com/user-attachments/assets/e6ca9035-fd60-45ad-bb24-3b0241b25654" />
 
 
 ## RESULT
